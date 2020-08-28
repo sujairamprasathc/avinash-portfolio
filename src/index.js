@@ -7,7 +7,7 @@ import * as categories from './categories.json';
 
 function ProjectHeading(props) {
 	return (
-		<div class=" h2">
+		<div className=" h2">
 			{props.heading}
 		</div>
 	);
@@ -15,7 +15,7 @@ function ProjectHeading(props) {
 
 function ProjectType(props) {
 	return (
-		<div class=" b1">
+		<div className=" b1">
 			{props.type}
 		</div>
 	);
@@ -23,7 +23,7 @@ function ProjectType(props) {
 
 function ProjectMeta(props) {
 	return (
-		<div class=" one-col ">
+		<div className=" one-col ">
 			<ProjectHeading heading={props.heading}/>
 			<ProjectType type={props.type}/>
 		</div>
@@ -32,7 +32,7 @@ function ProjectMeta(props) {
 
 function ProjectDescription(props) {
 	return (
-		<p class=" one-half-col b1">
+		<p className=" one-half-col b1">
 			{props.description}
 		</p>
 	);
@@ -40,8 +40,8 @@ function ProjectDescription(props) {
 
 function ProjectArrow(props) {
 	return (
-		<div class=" half-col icon">
-			<div class=" arrow">
+		<div className=" half-col icon">
+			<div className=" arrow">
 				<svg height="30" width="30">
 				<line x1="1" y1="28" x2="29" y2="1"/>
 				<line x1="0" y1="1" x2="29" y2="1" />
@@ -55,7 +55,7 @@ function ProjectArrow(props) {
 
 function ProjectItem(props) {
 	return (
-		<div class=" three-col project-item-content">
+		<div className=" three-col project-item-content">
 			<ProjectMeta heading={props.heading} type={props.type}/>
 			<ProjectDescription description={props.description}/>
 			<ProjectArrow />
@@ -65,9 +65,9 @@ function ProjectItem(props) {
 
 function ProjectImage(props) {
 	return (
-		<div class="one-col">
-		<div class=" project-item-image">
-				<img class=" image" src={props.image} alt="pupp" />
+		<div className="one-col">
+		<div className=" project-item-image">
+				<img className=" image" src={props.image} alt="pupp" />
 			</div>
 		</div>
 	);
@@ -75,9 +75,15 @@ function ProjectImage(props) {
 
 function Project(props) {
 	return (
-		<div class="project-item row-containers">
-			<ProjectImage image={props.image} />
-			<ProjectItem heading={props.heading} type={props.type} description={props.description}/>
+		<div className="project-item row-containers">
+			{
+				(props.category_id === 0 || props.category_id === props.category) &&
+					<ProjectImage image={props.image} />
+			}
+			{
+				(props.category_id === 0 || props.category_id === props.category) &&
+					<ProjectItem heading={props.heading} type={props.type} description={props.description}/>
+			}
 		</div>
 	);
 }
@@ -88,12 +94,13 @@ function ProjectList(props) {
 	rows.push( project_list["projects"].map((project) => {
 		return (
 			<Project heading={project["heading"]} type={project["type"]} description={project["description"]}
-				image={require(`${project["image"]}`)} />
+				image={require(`${project["image"]}`)} category_id={props.category_id}
+				category={project["category"]} />
 		);
 	}) );
 
 	return (
-		<div class="project-list">
+		<div className="project-list">
 		{rows}
 		</div>
 	);
@@ -102,7 +109,7 @@ function ProjectList(props) {
 function Header(props) {
 	return (
 		<header>
-		<div class=" h1 one-col">
+		<div className=" h1 one-col">
 			Portfolio
 		</div>
 		</header>
@@ -111,11 +118,29 @@ function Header(props) {
 
 function Category(props) {
 	return (
-		<ul class=" category-list-item b1" onClick={ () => alert("Clicking works") }>
+		<ul className=" category-list-item b1" onClick={ props.onClick } key={props.name} >
 			{props.name}
-			<div class="icon">
-				<div class=" arrow">
-				<svg viewbox="0 0 40 40" transform="rotate(90 0 0)" height="30" width="30">
+			<div className="icon">
+				<div className=" arrow">
+				<svg viewBox="0 0 40 40" transform="rotate(90 0 0)" height="30" width="30">
+					<line x1="1" y1="28" x2="29" y2="1"/>
+					<line x1="0" y1="1" x2="29" y2="1" />
+					<line x1="29" y1="0" x2="29" y2="29"/>
+					Sorry, your browser does not support inline SVG.
+				</svg>
+				</div>
+			</div>
+		</ul>
+	);
+}
+
+function SelectedCategory(props) {
+	return (
+		<ul className=" category-list-item h2" onClick={ props.onClick } key={props.name} >
+			{props.name}
+			<div className="icon">
+				<div className=" arrow">
+				<svg viewBox="0 0 40 40" transform="rotate(90 0 0)" height="30" width="30">
 					<line x1="1" y1="28" x2="29" y2="1"/>
 					<line x1="0" y1="1" x2="29" y2="1" />
 					<line x1="29" y1="0" x2="29" y2="29"/>
@@ -132,40 +157,44 @@ function CategoryList(props) {
 
 	rows.push( categories["categories"].map((category) => {
 		return (
-			<Category name={category} />
+			<div>
+			{
+				(props.category_id === category["id"]) &&
+					<SelectedCategory name={category["category"]} onClick={() => props.onClick(category["id"])} />
+			}
+			{
+				(props.category_id !== category["id"]) &&
+					<Category name={category["category"]} onClick={() => props.onClick(category["id"])} />
+			}
+			</div>
 		);
 	}) );
 
 	return (
-		<nav class=" category-filter row-containers">
-			<div class=" h3 one-col">
-				CategoryList
+		<nav className=" category-filter row-containers">
+			<div className=" h3 one-col">
+				Categories
 			</div>
-			<div class=" one-col ">
-				<ul class=" category-list-item-1 h2">
-					All Projects
-					<div class="half-col icon">
-					<div class="arrow">
-						<svg viewbox="0 0 40 40" transform="rotate(90 0 0)" height="30" width="30">
-							<line x1="1" y1="28" x2="29" y2="1"/>
-							<line x1="0" y1="1" x2="29" y2="1" />
-							<line x1="29" y1="0" x2="29" y2="29"/>
-							Sorry, your browser does not support inline SVG.
-						</svg>
-					</div>
-					</div>
-				</ul>
+			<div className=" one-col ">
+				{
+					(props.category_id === 0) &&
+						<SelectedCategory name="All Projects" onClick={() => props.onClick(0)} />
+				}
+				{
+					(props.category_id !== 0) &&
+						<Category name="All Projects" onClick={() => props.onClick(0)} />
+				}
 				{rows}
 			</div>
-			<div class=" two-col"></div>
+			<div className=" two-col"></div>
 		</nav>
 	);
 }
 
 function MenuButton(props) {
 	return (
-		<div class=" menu-circle ">
-			<svg viewbox="-5 -5 40 40" height="30" width="30">
+		<div className="menu-circle">
+			<svg viewBox="-5 -5 40 40" height="30" width="30">
 				<line x1="1" y1="28" x2="29" y2="1"/>
 				<line x1="29" y1="29" x2="1" y2="1" />
 				Sorry, your browser does not support inline SVG.
@@ -176,15 +205,15 @@ function MenuButton(props) {
 
 function NextPage(props) {
 	return (
-		<div class="next-page row-containers">
-			<div class=" one-col h1">Next Category</div>
-			<div class=" two-col next-page-content">
-				<div class=" h2">
+		<div className="next-page row-containers">
+			<div className=" one-col h1">Next Category</div>
+			<div className=" two-col next-page-content">
+				<div className=" h2">
 					Communication Design
 				</div>
 			</div>
-			<div class=" one-col icon">
-				<div class=" arrow">
+			<div className=" one-col icon">
+				<div className=" arrow">
 					<svg transform="rotate(90 0 0)" height="30" width="30">
 						<line x1="1" y1="28" x2="29" y2="1"/>
 						<line x1="0" y1="1" x2="29" y2="1" />
@@ -197,7 +226,8 @@ function NextPage(props) {
 	);
 }
 
-class Root extends React.Component {
+class Root extends React.Component
+{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -205,19 +235,24 @@ class Root extends React.Component {
 		};
 	}
 
+	updateCategory(category_id_) {
+		this.setState({category_id: category_id_});
+	}
+
 	render() {
 		return (
-			<body>
+			<React.Fragment>
 				<MenuButton />
-				<div class="container">
+				<div className="container">
 					<Header />
-					<CategoryList />
+					<CategoryList onClick={(category_id) => this.updateCategory(category_id)}
+						category_id={this.state.category_id} />
 					<div style={{height: "300px"}}></div>
-					<ProjectList />
+					<ProjectList category_id={this.state.category_id} />
 					<div style={{height: "300px"}}></div>
 					<NextPage />
 				</div>
-			</body>
+			</React.Fragment>
 		);
 	}
 }

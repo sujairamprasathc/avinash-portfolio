@@ -1,7 +1,8 @@
 {
   "name": "avinash-portfolio",
   "version": "0.1.0",
-  "private": true,
+ "private": true,
+ "homepage" : "http://homepages.iitb.ac.in/~avinashmanikandan/build/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
