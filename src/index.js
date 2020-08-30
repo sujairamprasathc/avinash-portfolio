@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 
-import * as project_list from './data.json';
-import * as categories from './categories.json';
+import * as project_list from './data/data.json';
+import * as categories from './data/categories.json';
 
 function ProjectHeading(props) {
 	return (
