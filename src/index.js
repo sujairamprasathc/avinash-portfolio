@@ -194,7 +194,7 @@ function CategoryList(props) {
 
 function MenuButton(props) {
 	return (
-		<div className="menu-circle">
+		<div className="menu-circle-mobile">
 			<svg viewBox="-5 -5 40 40" height="30" width="30">
 				<line x1="1" y1="28" x2="29" y2="1"/>
 				<line x1="29" y1="29" x2="1" y2="1" />
@@ -206,15 +206,15 @@ function MenuButton(props) {
 
 function NextPage(props) {
 	return (
-		<div className="next-page row-containers">
-			<div className=" one-col h1">Next Category</div>
-			<div className=" two-col next-page-content">
-				<div className=" h2">
-					Communication Design
-				</div>
+		<div class="next-page row-containers">
+			<div class=" one-col h1">
+				Next Category
 			</div>
-			<div className=" one-col icon">
-				<div className=" arrow">
+			<div class=" three-col next-page-content ">
+				<div class=" float-item"> 
+					<div class=" h2">Communication Design </div>
+				</div>
+				<div class=" icon float-item" >
 					<svg transform="rotate(90 0 0)" height="30" width="30">
 						<line x1="1" y1="28" x2="29" y2="1"/>
 						<line x1="0" y1="1" x2="29" y2="1" />
@@ -222,7 +222,7 @@ function NextPage(props) {
 						Sorry, your browser does not support inline SVG.
 					</svg>
 				</div>
-			</div>
+			</div> 
 		</div>
 	);
 }
@@ -242,18 +242,16 @@ class Root extends React.Component
 
 	render() {
 		return (
-			<React.Fragment>
+			<div className="container">
 				<MenuButton />
-				<div className="container">
-					<Header />
-					<CategoryList onClick={(category_id) => this.updateCategory(category_id)}
-						category_id={this.state.category_id} />
-					<div style={{height: "300px"}}></div>
-					<ProjectList category_id={this.state.category_id} />
-					<div style={{height: "300px"}}></div>
-					<NextPage />
-				</div>
-			</React.Fragment>
+				<Header />
+				<CategoryList onClick={(category_id) => this.updateCategory(category_id)}
+					category_id={this.state.category_id} />
+				<div style={{height: "300px"}}></div>
+				<ProjectList category_id={this.state.category_id} />
+				<div style={{height: "300px"}}></div>
+				<NextPage />
+			</div>
 		);
 	}
 }
