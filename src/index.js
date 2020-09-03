@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
+import ProjectPage from './components/ProjectPage/'
+
 import * as project_list from './data/data.json';
 import * as categories from './data/categories.json';
 
@@ -256,4 +258,5 @@ class Root extends React.Component
 	}
 }
 
-ReactDOM.render(<Root />, document.getElementById("root"));
+//ReactDOM.render(<Root />, document.getElementById("root"));
+ReactDOM.render(<ProjectPage />, document.getElementById("root"));
