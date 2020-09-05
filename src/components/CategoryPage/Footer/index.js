@@ -2,13 +2,13 @@ import React from 'react';
 
 export default function Footer(props) {
 	return (
-		<div className="next-page row-containers">
+		<div className="next-page row-containers" onClick={props.onClick}>
 			<div className=" one-col h1">
 				Next Category
 			</div>
 			<div className=" three-col next-page-content ">
 				<div className=" float-item"> 
-					<div className=" h2">Communication Design </div>
+					<div className=" h2">{props.next_category}</div>
 				</div>
 				<div className=" icon float-item" >
 					<svg transform="rotate(90 0 0)" height="30" width="30">
