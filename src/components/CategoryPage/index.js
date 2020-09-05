@@ -1,6 +1,8 @@
 import React from 'react';
 
-import '../..//index.css';
+import '../../index.css';
+import * as project_list from '../../data/data.json';
+import * as category_list from '../../data/categories.json';
 
 import Header from './Header/';
 import Footer from './Footer/';
@@ -21,17 +23,25 @@ export default class Root extends React.Component
 		this.setState({category_id: category_id_});
 	}
 
+	nextCategory() {
+		this.setState({category_id: (this.state.category_id + 1) % project_list["numProjects"]});
+	}
+
+	getNextCategory() {
+		return category_list["categories"][(this.state.category_id + 1) % project_list["numProjects"]]["category"];
+	}
+
 	render() {
 		return (
 			<div className="container">
 				<CloseButton />
 				<Header />
 				<CategoryList onClick={(category_id) => this.updateCategory(category_id)}
-					category_id={this.state.category_id} />
+					current_category_id={this.state.category_id} />
 				<div style={{height: "300px"}}></div>
 				<ProjectList category_id={this.state.category_id} />
 				<div style={{height: "300px"}}></div>
-				<Footer />
+				<Footer onClick={() => this.nextCategory()} next_category={this.getNextCategory()} />
 			</div>
 		);
 	}
