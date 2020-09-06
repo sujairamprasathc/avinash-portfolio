@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/avinash-portfolio/precache-manifest.a9bf7b7cf5395df626c2f6d137283efb.js"
+  "/avinash-portfolio/precache-manifest.010e13c46825689213205fbf36c786b0.js"
 );
 
 self.addEventListener('message', (event) => {
