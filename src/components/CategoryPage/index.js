@@ -1,14 +1,13 @@
 import React from 'react';
 
-import '../../index.css';
-import * as project_list from '../../data/data.json';
-import * as category_list from '../../data/categories.json';
+import * as project_list from 'data/data.json';
+import * as category_list from 'data/categories.json';
 
 import Header from './Header/';
 import Footer from './Footer/';
-import CloseButton from './CloseButton/';
-import CategoryList from './CategoryList/';
 import ProjectList from './ProjectList/';
+import CategoryList from './CategoryList/';
+import CloseButton from 'components/CloseButton/';
 
 export default class Root extends React.Component
 {

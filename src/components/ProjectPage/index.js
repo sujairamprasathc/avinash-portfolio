@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import ProjectHeader from './ProjectPageHeader/'
-import ProjectFooter from './ProjectPageFooter/'
-import CloseButton from './../CloseButton/'
+import ProjectHeader from './Header/'
+import ProjectFooter from './Footer/'
+import CloseButton from 'components/CloseButton'
+import CategoryPage from 'components/CategoryPage'
 
 import * as project_list from '../../data/data.json';
 
@@ -27,16 +29,15 @@ export default function ProjectPage(props) {
 
 	return (
 		<div className="container">
-			<CloseButton />
-			
+			<CloseButton onClick={() => {
+				ReactDOM.render(<CategoryPage />, document.getElementById("root"));
+			}} />
+
 			{header}
 
 			<div className="image-train" style={{gridColumn: 1/-1, flexDirection:"column"}}>
 				{image_train}
 			</div>
-
-
-
 
 			<ProjectFooter />
 		</div>

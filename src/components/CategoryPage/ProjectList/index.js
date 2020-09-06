@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import * as project_list from '../../../data/data.json';
+import * as project_list from 'data/data.json';
+import ProjectPage from 'components/ProjectPage/';
 
 function ProjectHeading(props) {
 	return (
@@ -72,14 +74,17 @@ function ProjectImage(props) {
 
 function Project(props) {
 	return (
-		<div className="project-item row-containers">
+		<div className="project-item row-containers" onClick={() => {
+			ReactDOM.render(<ProjectPage project_id={props.project_id} />,
+					document.getElementById("root"));
+		}} >
 			{
 				(props.category_id === 0 || props.category_id === props.category) &&
-					<ProjectImage image={props.image} />
-			}
-			{
-				(props.category_id === 0 || props.category_id === props.category) &&
-					<ProjectItem heading={props.heading} type={props.type} description={props.description}/>
+					<React.Fragment>
+						<ProjectImage image={props.image} />
+						<ProjectItem heading={props.heading} type={props.type}
+							description={props.description}/>
+					</React.Fragment>
 			}
 		</div>
 	);
@@ -90,9 +95,10 @@ export default function ProjectList(props) {
 
 	rows.push( project_list["projects"].map((project) => {
 		return (
-			<Project heading={project["heading"]} type={project["type"]} description={project["description"]}
-				image={require(`${project["image"]}`)} category_id={props.category_id}
-				category={project["category"]} />
+			<Project heading={project["heading"]} type={project["type"]}
+				description={project["description"]} project_id={project["project_id"]}
+				image={require("../../../" + project["image"] )}
+				category_id={props.category_id} category={project["category"]} />
 		);
 	}) );
 
