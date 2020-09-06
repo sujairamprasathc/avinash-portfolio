@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 
 import 'stylesheet.css';
 
-import CategoryPage from 'components/CategoryPage/'
+import ProjectPage from 'components/ProjectPage/'
 
-ReactDOM.render(<CategoryPage />, document.getElementById("root"));
+ReactDOM.render(<ProjectPage project_id={0} />, document.getElementById("root"));
