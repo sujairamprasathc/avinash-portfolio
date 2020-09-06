@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import * as project_list from 'data/data.json';
 import * as category_list from 'data/categories.json';
@@ -7,6 +8,7 @@ import Header from './Header/';
 import Footer from './Footer/';
 import ProjectList from './ProjectList/';
 import CategoryList from './CategoryList/';
+import HomePage from 'components/HomePage';
 import CloseButton from 'components/CloseButton/';
 
 export default class Root extends React.Component
@@ -33,7 +35,9 @@ export default class Root extends React.Component
 	render() {
 		return (
 			<div className="container">
-				<CloseButton />
+				<CloseButton onClick={() => {
+					ReactDOM.render(<HomePage />, document.getElementById("root"));
+				} } />
 				<Header />
 				<CategoryList onClick={(category_id) => this.updateCategory(category_id)}
 					current_category_id={this.state.category_id} />
