@@ -1,26 +1,27 @@
 {
   "files": {
     "main.css": "/avinash-portfolio/static/css/main.f4f80d61.chunk.css",
-    "main.js": "/avinash-portfolio/static/js/main.e2cc1c28.chunk.js",
-    "main.js.map": "/avinash-portfolio/static/js/main.e2cc1c28.chunk.js.map",
+    "main.js": "/avinash-portfolio/static/js/main.f8b53d77.chunk.js",
+    "main.js.map": "/avinash-portfolio/static/js/main.f8b53d77.chunk.js.map",
     "runtime-main.js": "/avinash-portfolio/static/js/runtime-main.39c123b8.js",
     "runtime-main.js.map": "/avinash-portfolio/static/js/runtime-main.39c123b8.js.map",
-    "static/js/2.3d0ef5c1.chunk.js": "/avinash-portfolio/static/js/2.3d0ef5c1.chunk.js",
-    "static/js/2.3d0ef5c1.chunk.js.map": "/avinash-portfolio/static/js/2.3d0ef5c1.chunk.js.map",
+    "static/js/2.9d3b3d14.chunk.js": "/avinash-portfolio/static/js/2.9d3b3d14.chunk.js",
+    "static/js/2.9d3b3d14.chunk.js.map": "/avinash-portfolio/static/js/2.9d3b3d14.chunk.js.map",
     "index.html": "/avinash-portfolio/index.html",
-    "precache-manifest.010e13c46825689213205fbf36c786b0.js": "/avinash-portfolio/precache-manifest.010e13c46825689213205fbf36c786b0.js",
+    "precache-manifest.432b734462c56689f5c04b30440730b6.js": "/avinash-portfolio/precache-manifest.432b734462c56689f5c04b30440730b6.js",
     "service-worker.js": "/avinash-portfolio/service-worker.js",
     "static/css/main.f4f80d61.chunk.css.map": "/avinash-portfolio/static/css/main.f4f80d61.chunk.css.map",
-    "static/js/2.3d0ef5c1.chunk.js.LICENSE.txt": "/avinash-portfolio/static/js/2.3d0ef5c1.chunk.js.LICENSE.txt",
+    "static/js/2.9d3b3d14.chunk.js.LICENSE.txt": "/avinash-portfolio/static/js/2.9d3b3d14.chunk.js.LICENSE.txt",
     "static/media/0.png": "/avinash-portfolio/static/media/0.95dca2bc.png",
     "static/media/1.png": "/avinash-portfolio/static/media/1.9d59a363.png",
     "static/media/2.png": "/avinash-portfolio/static/media/2.d0b28c86.png",
-    "static/media/3.png": "/avinash-portfolio/static/media/3.95dca2bc.png"
+    "static/media/3.png": "/avinash-portfolio/static/media/3.95dca2bc.png",
+    "static/media/sq.jpg": "/avinash-portfolio/static/media/sq.2a31861e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.39c123b8.js",
-    "static/js/2.3d0ef5c1.chunk.js",
+    "static/js/2.9d3b3d14.chunk.js",
     "static/css/main.f4f80d61.chunk.css",
-    "static/js/main.e2cc1c28.chunk.js"
+    "static/js/main.f8b53d77.chunk.js"
   ]
 }
